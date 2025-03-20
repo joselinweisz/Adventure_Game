@@ -1,0 +1,41 @@
+# search_module.py
+def choose_direction():
+    """
+    Prompts the user to choose a direction until they select 'west' (option 4).
+    Returns the selected direction.
+    """
+    while True:
+        print("Choose an action:")
+        print("1. Search this block and east block")
+        print("2. Search north block")
+        print("3. Search south block")
+        print("4. Search west block")
+
+        choice = input("Enter your choice (1-4): ")
+
+        if choice == "4":
+            print("""
+
+You find an ally and proceed to the west block.
+
+
+""")
+            return "west"
+        elif choice in ["1"]:
+            print("""
+
+There is only a dead end to east. You head back to the middle to search another direction
+
+""")
+        elif choice in ["2", "3"]:
+            print("""
+
+Interact with guard beside an invisible wall. You find out you are not allowed to go in that direction right now.
+
+""")
+        else:
+            print("""
+
+Invalid input. Please enter a number between 1 and 4.
+
+""")

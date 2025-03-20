@@ -1,0 +1,26 @@
+#Joselin Weisz
+#Adventure Game for CSS 225
+from chapters import chapter1, chapter2, chapter3, chapter4, chapter5
+
+def main():
+    print("Welcome to the Text-Based Game!")
+
+    # Play Chapter 1
+    direction = chapter1.play_chapter()
+
+    if direction == "west":
+        # Play Chapter 2
+        player_name = "Hero"
+        if chapter2.play_chapter(player_name):
+            # If battle is won, proceed to Chapter 3
+            chapter3.play_chapter(player_name)
+            chapter4.play_chapter(player_name)
+            chapter5.play_chapter(player_name)
+            print("\nCongratulations! You completed the game.")
+        else:
+            print("Game Over.")
+    else:
+        print("You took the wrong path. Game Over.")
+if __name__ == "__main__":
+    main()
+    input("\nPress Enter to exit...")

@@ -1,0 +1,41 @@
+# battle_module.py
+import random
+
+def battle(player_name, player_hp, enemy_name, enemy_hp, player_attack, enemy_attack):
+    """Simulates a battle sequence between a player and an enemy.
+       Returns True if the player wins, False otherwise.
+    """
+    print(f"\n--- A {enemy_name} appears! ---\n")
+
+    while player_hp > 0 and enemy_hp > 0:
+        print(f"{player_name}: HP = {player_hp}")
+        print(f"{enemy_name}: HP = {enemy_hp}\n")
+
+        # Player's turn
+        action = input("Choose your action (attack / large attack): ").lower()
+
+        if action == "attack":
+            damage = random.randint(player_attack // 2, player_attack)
+            enemy_hp -= damage
+            print(f"{player_name} attacks {enemy_name} for {damage} damage!\n")
+
+        elif action == "large attack":
+            damage = random.randint(player_attack, player_attack * 2)  # Large attack deals up to double damage
+            enemy_hp -= damage
+            print(f"{player_name} uses a LARGE ATTACK on {enemy_name} for {damage} damage!\n")
+
+        else:
+            print("Invalid action. You lose your turn.\n")
+
+        # Enemy's turn (if still alive)
+        if enemy_hp > 0:
+            damage = random.randint(enemy_attack // 2, enemy_attack)
+            player_hp -= damage
+            print(f"{enemy_name} attacks {player_name} for {damage} damage!\n")
+
+    if player_hp > 0:
+        print(f"\n{enemy_name} has been defeated. {player_name} wins!\n")
+        return True
+    else:
+        print(f"\n{player_name} has been defeated. {enemy_name} wins!\n")
+        return False

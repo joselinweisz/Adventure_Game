@@ -1,0 +1,21 @@
+#Adventure Game chapter1.py
+from search_module import choose_direction
+
+def play_chapter():
+    """Handles Chapter 1 events."""
+    print("""
+                                Chapter One:
+
+    Narrator: You awake to the thunderous cacophony of footsteps, chatter, and engines.
+    In another year or so, this will become your lullaby.
+
+    You are up on a busy street corner downtown, unacknowledged by any passerby.
+    What will you do now?
+    """)
+
+    direction = choose_direction()
+    print("You chose:", direction)
+
+    print("\nEnd of Chapter One.")
+
+    return direction  # Return the result for the next chapter

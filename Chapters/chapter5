@@ -1,0 +1,52 @@
+from battle_module import battle
+def play_chapter(player_name):
+    """Handles Chapter 5 events, including searching blocks and the final boss battle."""
+    player_hp = 100
+    player_attack = 20
+
+    print("""
+                            Chapter Five:
+
+You and your team decide to put an end to this. With extra determination, you and your team search for
+the Graffiti Artist!
+
+You search every block for the old man, but instead of finding him, you find mysterious crates instead.
+
+You and your team wonder if the crates are a gift or a trap.
+    """)
+
+    def search_blocks():
+        """Simulates searching blocks and handling crate encounters."""
+        directions = ["North", "South", "East", "West"]
+        for direction in directions:
+            print(f"\n--- You enter the {direction} block ---")
+            print("You find a crate.")
+            choice = input("Do you want to open it? (yes/no): ").strip().lower()
+            if choice in ["yes", "y"]:
+                battle(player_name, 100, "Crate Monster", 40, 20, 10)
+
+    search_blocks()
+
+    print("\nAfter searching all the blocks, you return to the center, only to find the Graffiti Artist waiting for you!")
+    print("\nYou do not want to chance another escape! You spring into battle!")
+
+
+    if not battle(player_name, 100, "Graffiti Artist", 100, 20, 15):
+        print("\nYou were defeated by the Graffiti Artist... The world fades to black.")
+        print("Game Over.")
+
+        retry = input("Do you want to try again? (yes/no): ").strip().lower()
+        if retry == "yes":
+            play_chapter(player_name)  
+        else:
+            print("Thank you for playing!")
+            return  
+
+    else:
+        print("""
+        You won! Hooray!
+        The Graffiti Artist is dead and you are free to leave this town!
+        Or, you can stay... but there are no promises that you will wake up free to go again tomorrow.
+                                        End of Story
+        """)
+

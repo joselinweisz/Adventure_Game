@@ -1,0 +1,27 @@
+#Adventure Game chapter2.py
+from battle_module import battle
+
+def play_chapter(player_name):
+    """Handles Chapter 2 battle and progress."""
+    print("""Chapter 2
+
+    Upon arriving at the west block, you and your ally are attacked by monsters.
+    """)
+
+    # Initial player and enemy stats
+    player_hp = 100
+    player_attack = 20
+    enemy_name = "Graffiti Monster"
+    enemy_hp = 60
+    enemy_attack = 10
+
+    # Start the battle
+    if battle(player_name, player_hp, enemy_name, enemy_hp, player_attack, enemy_attack):
+        print("You won the battle and gained entry to the north block.")
+        print("In the north block, you meet 2 more allies. Hooray!")
+        print("You see a lone man making graffiti down the path...")
+        print("End of Chapter Two.")
+        return True  # Player won
+    else:
+        print("You lost the battle. Try again.")
+        return False  # Player lost

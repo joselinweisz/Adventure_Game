@@ -1,0 +1,53 @@
+#Adventure Game chapter3.py
+from battle_module import battle
+
+def play_chapter(player_name):
+    """Handles Chapter 3 events and choices."""
+    print("""
+                            Chapter Three.
+
+You venture further into the North Block.
+
+You observe an old man spraying paint onto a nearby brick wall.
+As you approach the graffiti artist, he noticed you. His eyes light up and he nearly dances with glee,
+‘We can’t let the game end so quickly, can we? It just got interesting!’ 
+
+You walk closer to the old man, but he disappears!
+
+A large group of monsters jump out of the brick wall!
+
+What should you do?""")
+    
+    player_hp = 100
+    player_attack = 20
+    enemy_name = "Pack of Graffiti Monsters"
+    enemy_hp = 60
+    enemy_attack = 10
+
+    while True:
+        print("\nChoose an action:")
+        print("1. Fight monster battle")
+        print("2. Flee")
+        choice = input("Enter your choice (1 or 2): ").strip()
+
+        if choice == "1":
+            if battle(player_name, player_hp, enemy_name, enemy_hp, player_attack, enemy_attack):
+                print("\nYou win! You and your new allies continue onward!")
+                break
+            else:
+                print("\nYou lost the battle and must choose again.\n")
+        elif choice == "2":
+            print("\nYou fled, your 2 new allies were lost, but you see an unguarded path leading to the south block.")
+            break
+        else:
+            print("Invalid choice. Please select 1 or 2.")
+
+    print("""
+
+As you get closer to the boarder between you and the south block, you see that the guard has disappeared
+and you now have access to pass back and fourth freely.
+It has been a long day, so you decide to rest for the night. 
+""")
+    print("""
+
+End of Chapter Three.""")
